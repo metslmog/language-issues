@@ -1,0 +1,309 @@
+.app {
+  min-height: 100vh;
+  background: #f7f7f8;
+  padding: 32px 24px;
+}
+
+.header {
+  background: #ffffff;
+  padding: 16px 24px;
+  border-radius: 8px;
+  border: 1px solid #e5e5e6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.header h1 {
+  color: #202123;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.locale-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.locale-selector label {
+  font-weight: 500;
+  color: #565869;
+  font-size: 0.875rem;
+}
+
+.locale-selector select {
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  background: #ffffff;
+  cursor: pointer;
+  min-width: 180px;
+  color: #202123;
+  transition: all 0.2s ease;
+  font-weight: 400;
+}
+
+.locale-selector select:hover {
+  border-color: #8e8ea0;
+  background: #fafafa;
+}
+
+.locale-selector select:focus {
+  outline: none;
+  border-color: #10a37f;
+  box-shadow: 0 0 0 3px rgba(16, 163, 127, 0.1);
+}
+
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.controls {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #e5e5e6;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.search-input {
+  flex: 1;
+  min-width: 240px;
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.9375rem;
+  transition: all 0.2s ease;
+  background: #ffffff;
+  color: #202123;
+  font-weight: 400;
+}
+
+.search-input::placeholder {
+  color: #8e8ea0;
+}
+
+.search-input:hover {
+  border-color: #8e8ea0;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #10a37f;
+  box-shadow: 0 0 0 3px rgba(16, 163, 127, 0.1);
+}
+
+.sort-select {
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.9375rem;
+  background: #ffffff;
+  cursor: pointer;
+  min-width: 160px;
+  color: #202123;
+  transition: all 0.2s ease;
+  font-weight: 400;
+}
+
+.sort-select:hover {
+  border-color: #8e8ea0;
+  background: #fafafa;
+}
+
+.sort-select:focus {
+  outline: none;
+  border-color: #10a37f;
+  box-shadow: 0 0 0 3px rgba(16, 163, 127, 0.1);
+}
+
+.results-count {
+  background: #ffffff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #e5e5e6;
+  margin-bottom: 16px;
+  font-weight: 500;
+  color: #565869;
+  font-size: 0.875rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.product-card {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #e5e5e6;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.product-card:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.product-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.product-name {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: #202123;
+  letter-spacing: -0.01em;
+  flex: 1;
+  min-width: 0;
+}
+
+.thumbs-up-icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+.thumbs-up-icon--filled {
+  color: #10a37f;
+}
+
+.thumbs-up-icon--outline {
+  color: #c5c5d0;
+}
+
+.product-price {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #10a37f;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.product-details {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 12px;
+  align-items: start;
+}
+
+/* ISSUE #2: LTR Layout - Hardcoded left/right positioning */
+/* ❌ BAD: Fixed grid column order doesn't work with RTL languages */
+/* The grid assumes: Label | Value | Label | Value */
+/* In RTL, this should reverse or use logical properties */
+
+/* ✅ GOOD: Should use logical properties like:
+   margin-inline-start instead of margin-left
+   margin-inline-end instead of margin-right
+   Or use CSS Grid/Flexbox with auto-direction
+*/
+
+.label {
+  font-weight: 500;
+  color: #8e8ea0;
+  font-size: 0.8125rem;
+}
+
+.value {
+  color: #202123;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.address-value {
+  word-break: break-word;
+}
+
+/* Truncation issue: fixed-width description can cut German compound words / CJK mid-character */
+.description-value {
+  max-width: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+}
+
+.issues-panel {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 8px;
+  border: 1px solid #e5e5e6;
+  margin-top: 24px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.issues-panel h2 {
+  color: #202123;
+  margin-bottom: 16px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.issues-panel ul {
+  list-style: none;
+  padding: 0;
+}
+
+.issues-panel li {
+  padding: 14px 16px;
+  margin-bottom: 8px;
+  background: #f7f7f8;
+  border-inline-start: 3px solid #10a37f;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  font-size: 0.875rem;
+  color: #565869;
+  line-height: 1.5;
+}
+
+.issues-panel li:hover {
+  background: #f0f0f0;
+  border-inline-start-color: #0d8c6f;
+}
+
+.issues-panel li strong {
+  color: #10a37f;
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+/* RTL support - workaround; should use logical properties throughout */
+.app[dir="rtl"] .product-details {
+  direction: rtl;
+  text-align: right;
+}
+
+.app[dir="rtl"] .header {
+  flex-direction: row-reverse;
+}
+
+.app[dir="rtl"] .controls {
+  flex-direction: row-reverse;
+}
